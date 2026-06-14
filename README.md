@@ -32,8 +32,14 @@ return {
           "",
           "## Ideas / Todo",
           "",
-        },
+        },~/.config/nvim/lua/plugins/cjournal.lua
       })
     end,
   },
 }
+```
+
+## Showcase
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/438ccf73-6db0-4b02-b010-dbd62328a382" />
+
+
