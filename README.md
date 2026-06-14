@@ -1,30 +1,39 @@
 # cjournal.nvim
 
-A minimal daily journaling plugin for Neovim.
+A minimalist daily journaling plugin for Neovim.
+
+## Features
+- **Daily Journaling:** Automatically creates and opens a markdown file named after the current date (`MM-DD.md`).
+- **Customizable Templates:** Populates new journal entries with a structured layout.
+- **Quick Timestamps:** Insert formatted time headers into your logs with a single keystroke.
 
 ## Installation
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
-{
-  "vernarment/cjournal.nvim",
-  config = function()
-    require("cjournal").setup({
-      journal_dir = "~/Documents/my_journal", -- ur folder
-      template = {                           -- customize
-        "# Journal ${date}",
-        "",
-        "## Done:",
-        "",
-        "## Books:",
-        "",
-        "Ideas",
-      }
-    })
-  end
+```lua
+return {
+  {
+    "vernarment/cjournal.nvim",
+    lazy = false,
+    config = function()
+      require("cjournal").setup({
+        -- Optional configuration (defaults shown below)
+        journal_dir = "~/journal",
+        file_format = "%m-%d.md",
+        date_format = "%d.%m.%Y",
+        timestamp_format = "## %H:%M — ",
+        template = {
+          "# Journal ${date}",
+          "",
+          "## Done",
+          "",
+          "## Books",
+          "",
+          "## Ideas / Todo",
+          "",
+        },
+      })
+    end,
+  },
 }
-
-## Keymaps
-
-* `<leader>jn` — Open/Create today's journal.
-* `<leader>jt` — Insert current timestamp (e.g., `## 15:30 — `) and enter Insert mode.
